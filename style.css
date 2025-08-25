@@ -1,0 +1,549 @@
+/* ---------- Theme & fonts ---------- */
+:root{
+  --ink:#2a2a2a; --muted:#6a6a6a;
+  --rose:#ff6fa5; --violet:#8b8bf6;
+  --card: rgba(255,255,255,0.92); --shadow:0 18px 40px rgba(0,0,0,.12);
+  --rad:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--ink); background:linear-gradient(#fff,#fff);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.65;
+}
+img{max-width:100%;display:block}
+
+/* ---------- Background carousel (full-page) ---------- */
+.bg-carousel{
+  position:fixed; inset:0; z-index:-3; overflow:hidden;
+}
+.bg-carousel .bg-slide{
+  position:absolute; inset:0; background-size:cover; background-position:center center;
+  opacity:0; transition:opacity 1.2s ease; transform:scale(1.02);
+}
+.bg-carousel .bg-slide.active{opacity:1}
+
+/* semi-transparent overlay so content is readable */
+.bg-carousel::after{
+  content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,240,248,0.38), rgba(240,248,255,0.28));
+  pointer-events:none;
+}
+
+/* ---------- Floating hearts (subtle) ---------- */
+.hearts{position:fixed; inset:0; pointer-events:none; z-index:-2}
+.hearts span{ position:absolute; width:18px;height:18px; background:linear-gradient(45deg,var(--rose),#ffa8c8);
+  transform:rotate(45deg); border-radius:4px; opacity:.30; animation:float 12s linear infinite}
+.hearts span::before,.hearts span::after{content:"";position:absolute;width:18px;height:18px;background:inherit;border-radius:50%}
+.hearts span::before{left:-9px}
+.hearts span::after{top:-9px}
+@keyframes float{from{transform:translateY(110vh) rotate(45deg)} to{transform:translateY(-10vh) rotate(45deg)}}
+
+/* ---------- Nav & header ---------- */
+.nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.85); backdrop-filter:blur(6px); box-shadow:0 6px 22px rgba(0,0,0,.06)}
+.nav .wrap{max-width:1100px; margin:auto; display:flex; gap:12px; align-items:center; justify-content:center; padding:10px 14px}
+.nav a{color:var(--ink); text-decoration:none; padding:8px 12px; border-radius:12px; font-weight:600}
+.nav a:hover,.nav a.active{background:#fff0f4}
+.brand{font-family: 'Parisienne', cursive; font-size:26px; margin-right:8px}
+
+/* ---------- Hero ---------- */
+.site-header .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:20px; max-width:1100px; margin:32px auto; padding:18px;display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 18px;
+  align-items: center;  }
+  .hero-content {
+  text-align: center;     /* ⬅️ Center-align heading + buttons */
+  justify-self: center;   /* ⬅️ Centers the whole block in its grid cell */
+}
+.script{font-family:'Parisienne',cursive;font-size:44px; color:var(--rose)}
+.lead{color:var(--muted); font-size:16px}
+
+/* ---------- Layout & cards ---------- */
+.container{max-width:1100px; margin:auto; padding:28px 18px}
+.card{background:var(--card); border-radius:var(--rad); box-shadow:var(--shadow); padding:18px}
+.grid{display:grid; gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.rounded{border-radius:14px; box-shadow:var(--shadow)}
+.center{text-align:center}
+.muted{color:var(--muted)}
+.big-number{font-size:26px; font-weight:800; margin-top:8px;text-align: center}
+.pill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.pill-list li{list-style:none;padding:8px 12px;border-radius:20px;background:#fff;border:1px solid #f0eef0}
+
+/* responsive adjustments */
+@media (max-width:960px){
+  .site-header .hero{grid-template-columns:1fr}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .nav .wrap{padding:10px}
+}
+
+/* ---------- Buttons ---------- */
+.btn{background:linear-gradient(90deg,var(--rose),var(--violet)); color:#fff; padding:10px 16px; border-radius:14px;text-decoration: none; font-weight:700; cursor:pointer; box-shadow:var(--shadow)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid #eee}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap}
+
+/* ---------- Timeline ---------- */
+.timeline{position:relative;margin:6px 0 18px;padding-left:16px}
+.timeline::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:4px;background:linear-gradient(var(--rose),var(--violet));border-radius:4px}
+.tl-item{display:flex; gap:12px; align-items:flex-start; margin:18px 0}
+.tl-dot{width:14px;height:14px;background:linear-gradient(var(--rose),var(--violet));border-radius:50%; flex:none}
+.tl-card{background:#fff;border-radius:12px;padding:14px;border:1px solid #f2e9ef;box-shadow:var(--shadow);width:100%}
+
+/* ---------- Reveal animations ---------- */
+.reveal{opacity:0; transform:translateY(14px); transition:all .6s ease;}
+.reveal.show{opacity:1; transform:none}
+.temp1{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: nowrap;
+}
+
+/* ---------- Gallery & lightbox ---------- */
+.grid img{height:220px;object-fit:cover;border-radius:12px;cursor:pointer}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.86);display:none;align-items:center;justify-content:center;z-index:1000}
+.lightbox img{max-width:90%;max-height:90%;border-radius:18px}
+.lightbox.show{display:flex}
+
+/* ---------- Footer ---------- */
+.site-footer{text-align:center;padding:28px 18px;color:#000000}
+
+/* ---------- Login page specific ---------- */
+.login-body{min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative}
+.login-container{position:relative;z-index:10;width:min(92%,380px);padding:22px 20px;background:rgba(255,255,255,0.96);border-radius:20px;box-shadow:var(--shadow);text-align:center}
+.login-logo{font-family:'Parisienne',cursive;font-size:42px;margin-bottom:4px}
+.login-title{font-size:24px;margin-bottom:6px}
+.login-sub{color:var(--muted);margin-bottom:12px}
+.login-form{display:flex;flex-direction:column;gap:10px}
+.login-label{text-align:left;font-weight:600;font-size:13px}
+.login-input{padding:10px 12px;border-radius:12px;border:1px solid #f3d7e0;outline:none}
+.login-input:focus{box-shadow:0 6px 18px rgba(255,111,160,.08);border-color:var(--rose)}
+.login-button{padding:10px 14px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--rose),var(--violet));color:#fff;font-weight:700;cursor:pointer}
+.login-gif img{width:120px;margin:8px auto 0;border-radius:12px}
+
+/* bottom hint */
+.hint-box{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:20;background:rgba(255,255,255,0.95);padding:10px 14px;border-radius:12px;box-shadow:var(--shadow);font-size:14px;color:var(--muted)}
+
+
+
+
+/* Transparent Login Card */
+.login-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 420px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+/* Transparent Inputs */
+.login-input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+.login-input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* Button with transparency */
+.login-button {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 75, 110, 0.8);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.login-button:hover {
+  transform: scale(1.05);
+  background: rgba(255, 75, 110, 1);
+}
+
+/* Hint box bottom-right */
+.hint-box {
+  position: fixed;
+  bottom: 12px;
+  right: 16px;
+  font-size: 0.8rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  max-width: 200px;
+}
+.hint-box p {
+  margin: 4px 0;
+}
+
+
+
+
+
+
+
+/* ---------------- Floating translucent login box (bottom-right) ---------------- */
+.floating-login {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  width: min(380px, 92vw);
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.30);            /* slightly dark translucent so white text reads well */
+  backdrop-filter: blur(8px);                  /* frosted glass look */
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  color: #fff;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Logo / title inside floating box */
+.floating-login .login-logo {
+  font-family: 'Parisienne', cursive;
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.floating-login .login-title {
+  font-size: 18px;
+  margin: 0 0 6px 0;
+  color: #fff;
+  font-weight: 600;
+}
+.floating-login .login-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 6px;
+}
+
+/* labels and inputs */
+.floating-login .login-label {
+  display: block;
+  font-weight: 600;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+.floating-login .login-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);   /* slightly visible so user knows field area */
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+.floating-login .login-input::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(2); /* make datepicker icon visible on dark background */
+}
+.floating-login .login-input::placeholder {
+  color: rgba(255,255,255,0.65);
+}
+
+/* button */
+.floating-login .login-button {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, rgba(255,75,110,0.95), rgba(255,117,140,0.95));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255,75,110,0.12);
+}
+.floating-login .login-button:hover {
+  transform: translateY(-2px);
+}
+
+/* gif */
+.floating-login .login-gif {
+  display:flex;
+  justify-content:center;
+  margin-top:8px;
+}
+.floating-login .login-gif img { width:110px; border-radius:8px; display:block }
+
+/* Make sure floating-login is responsive on small screens */
+@media (max-width:420px){
+  .floating-login { right:10px; bottom:10px; width: calc(100% - 20px); padding:14px; }
+  .floating-login .login-gif img { width:90px; }
+}
+
+/* ---------------- relocate hint box to bottom-left and make it small/transparent ---------------- */
+.hint-left {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 9000;
+  background: rgba(0,0,0,0.28);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  max-width: 220px;
+}
+.hint-left p { margin:4px 0; line-height:1.2; color:rgba(255,255,255,0.92) }
+
+
+
+/* ---------------- Centered translucent login box ---------------- */
+.center-login {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(400px, 92vw);
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.30);   /* transparent dark */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.center-login .login-logo {
+  font-family: 'Parisienne', cursive;
+  font-size: 36px;
+  color: #fff;
+}
+
+.center-login .login-title {
+  font-size: 22px;
+  margin: 6px 0;
+  font-weight: 600;
+}
+
+.center-login .login-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 10px;
+}
+
+.center-login .login-label {
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  color: rgba(255,255,255,0.95);
+  margin: 4px 0;
+}
+
+.center-login .login-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.center-login .login-input::placeholder {
+  color: rgba(255,255,255,0.65);
+}
+
+.center-login .login-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, rgba(255,75,110,0.95), rgba(255,117,140,0.95));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.center-login .login-button:hover {
+  transform: translateY(-2px);
+}
+
+.center-login .login-gif {
+  margin-top: 12px;
+}
+.center-login .login-gif img {
+  width: 120px;
+  border-radius: 10px;
+}
+
+/* ---------------- Transparent hint box (bottom-right) ---------------- */
+.hint-right {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 9999;
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  max-width: 220px;
+  text-align: left;
+}
+.hint-right p {
+  margin: 4px 0;
+  line-height: 1.3;
+  color: rgba(255,255,255,0.92);
+}
+
+.temp{
+  color:brown
+}
+
+
+
+
+/* Wrapper around date input */
+.date-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15); /* glass effect */
+  border: 2px solid rgba(255, 105, 180, 0.6);
+  border-radius: 14px;
+  padding: 8px 14px;
+  max-width: 300px;
+  margin: 15px auto;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.temp2 {
+  display: block;          /* makes it a block so margin works */
+  margin: 15px auto;       /* auto centers horizontally */
+  max-width: 90%;          /* prevents image from overflowing */
+  border-radius: 12px;     /* rounded corners for soft look */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* subtle shadow */
+}
+
+
+
+
+/* Heart / icon */
+.date-icon {
+  font-size: 15px;
+  margin-right: 8px;
+  color: #000000;
+}
+
+/* Input itself */
+.date-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color:#000000;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+/* On hover */
+.date-wrapper:hover {
+  border-color: #ff1493;
+  box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+}
+
+/* Date picker icon (calendar) */
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+  opacity: .8;
+}
+
+
+
+#playlist li.active-song {
+  background: linear-gradient(90deg, var(--rose), var(--violet));
+  color: #fff;
+  font-weight: bold;
+}
+
+.controls .btn {
+  margin: 4px;
+}
+
+
+.temp3{
+display: block;            /* ensures margin auto works */
+  margin: 0 auto;            /* centers the image horizontally */
+  height: 10%;               /* set height to 20% of parent */
+  width: 70%;                /* set width to 70% of parent */
+  object-fit: contain;
+}
+
+.temp4 {
+  text-align: center;  /* centers text in h3 and li */
+}
+
+.temp4 ul#playlist {
+  list-style: none;    /* remove default bullets */
+  padding: 0;          /* remove default padding */
+}
+
+.temp4 ul#playlist li {
+  margin: 8px 0;       /* spacing between list items */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.temp5 {
+  text-align: center;  /* centers text in h3 and li */
+  padding-bottom: 16px;
+}
+
+.grid img.temp6 {
+  grid-column: span 2;       /* occupy 2 columns */
+  width: 90%;                /* reduce width from full span to 90% */
+  justify-self: center;      /* center image horizontally in its grid area */
+  height: 220px;             /* keep same height */
+  object-fit: cover;
+}
