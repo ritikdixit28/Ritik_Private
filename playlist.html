@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Playlist — Our Songs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-carousel" aria-hidden="true"><div class="bg-slide"></div><div class="bg-slide"></div></div>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html"><b>Ri Ki Yam</b></a>
+      <a href="index.html">Home</a>
+      <a href="story.html">Our Story</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="quotes.html">Quotes</a>
+      <a href="letters.html">Letters</a>
+      <a href="playlist.html" class="active">Playlist</a>
+      <a href="contact.html">Finale</a>
+    </div>
+  </nav>
+
+  <!-- <header class="page-hero">
+    <h1 class="script reveal">Our soundtrack</h1>
+    <p class="lead reveal">Press play if your browser blocks autoplay.</p>
+  </header> -->
+
+  <section class="container grid g2">
+    <div class="card reveal">
+      <h3 class="temp5">Now Playing 🎵</h3>
+      <audio id="bgMusic" preload="auto" loop>
+        <source src="music/music1.mp3" type="audio/mpeg">
+    </audio>
+      <div class="controls">
+          <button id="prevSong" class="btn ghost">⏮ Prev</button>
+        <button id="playNow" class="btn">▶ Play / ⏸ Pause</button>
+          <button id="nextSong" class="btn ghost">⏭ Next</button>
+        <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" />
+      </div>
+      <!-- <p class="muted small">Tip: Some browsers block autoplay. If you don’t hear music, click Play.</p> -->
+    </div>
+
+    <div class="card reveal temp4">
+      <h3>Our favorites</h3>
+     <ul id="playlist">
+  <li data-src="music/music1.mp3">Agar tum Saath Ho</li>
+  <li data-src="music/music2.mp3">Chand baliyan</li>
+  <li data-src="music/music3.mp3">Tu Hi Haqeekat</li>
+
+</ul>
+
+      <!-- <div class="add-song">
+        <input type="text" id="songInput" placeholder="Paste an MP3 URL to add" />
+        <button id="addSong" class="btn ghost">Add Song</button>
+      </div>
+      <ul id="songList" class="song-list"></ul>
+    </div> -->
+  </section>
+
+  <section class="container card reveal">
+    <img class="rounded temp3" src="images/pic9.jpeg" alt="Music love gif">
+  </section>
+
+<footer class="site-footer">
+    Made with ❤ by Ritik for Kallo · © <span id="year"></span>
+  </footer> <script src="script.js"></script>
+</body>
+</html>

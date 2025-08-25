@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise for Lado ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .heart {
+      position: fixed;
+      bottom: 0;
+      font-size: 24px;
+      color: red;
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-700px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quotes.html">Quotes</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="letters.html">Letters</a></li>
+      <li><a href="surprise.html">Surprise</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero full-screen" style="background-image:url('https://i.imgur.com/KnKQh3y.jpg');">
+    <div class="overlay">
+      <h1>Surprise for My Lado 🎁</h1>
+      <p>A page full of love, just for you 💕</p>
+    </div>
+  </header>
+
+  <!-- Surprise Content -->
+  <section class="surprise content">
+    <h2>Forever Yours ❤️</h2>
+    <p>Lado, you are my most beautiful dream.  
+       No matter how much I say, words will never be enough.  
+       This heart, this soul, this life — all are yours.  
+       You are my today, my tomorrow, and my forever. 💖</p>
+
+    <img src="https://media.tenor.com/6G8WkKZq1mAAAAAM/kiss-love.gif" alt="gif" class="gif">
+
+    <h2>A Promise 💍</h2>
+    <p>I promise to always stand by you.  
+       Through every laugh, every tear, every adventure — we’ll be together.  
+       My love for you will never fade.</p>
+
+    <audio controls autoplay loop>
+      <source src="https://www2.cs.uic.edu/~i101/SoundFiles/ImperialMarch60.wav" type="audio/wav">
+    </audio>
+    <p>This melody is my forever promise to you 🎶</p>
+  </section>
+
+  <footer>
+    <p>Made with ❤️ by BUBU for Lado 💕</p>
+  </footer>
+
+  <!-- Floating Hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 6000);
+    }
+    setInterval(createHeart, 600);
+  </script>
+</body>
+</html>
