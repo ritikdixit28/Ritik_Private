@@ -8,7 +8,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
-  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: 'Inter', system-ui,container grid g3 quotes-grid -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color:var(--ink); background:linear-gradient(#fff,#fff);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -546,4 +546,10 @@ display: block;            /* ensures margin auto works */
   justify-self: center;      /* center image horizontally in its grid area */
   height: 220px;             /* keep same height */
   object-fit: cover;
+}
+
+.temp7 {
+  font-size: 24px;
+  font-weight: bold;   /* makes text bold */
+  color: #000000;      /* you can change this hex code to any color */
 }
